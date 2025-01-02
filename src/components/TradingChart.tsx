@@ -1,15 +1,24 @@
 import { useEffect, useRef } from 'react';
 import { createChart, ColorType } from 'lightweight-charts';
 
+interface TokenInfo {
+    current_price: number;
+    price_change_24h: number;
+    price_change_percentage_24h: number;
+    market_cap: number;
+    total_volume: number;
+  }
+
 interface TradingChartProps {
-  data: Array<{
-    time: string;
-    open: number;
-    high: number;
-    low: number;
-    close: number;
-  }>;
-}
+    data: Array<{
+      time: string;
+      open: number;
+      high: number;
+      low: number;
+      close: number;
+    }>;
+    tokenInfo?: TokenInfo;
+  }
 
 const TradingChart = ({ data }: TradingChartProps) => {
   const chartContainerRef = useRef<HTMLDivElement>(null);
